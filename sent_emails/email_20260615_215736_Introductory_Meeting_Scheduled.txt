@@ -1,0 +1,31 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishnavarshney300@gmail.com, krishna9988gupta@gmail.com
+Subject: Introductory Meeting Scheduled – June 18, 2026 at 11:00 AM
+Date:    2026-06-15 21:57:36
+============================================================
+
+Dear Aman and Tony,
+
+We are pleased to inform you that an introductory meeting has been scheduled to welcome Aman to the Atliq Technologies family.
+
+Meeting Details:
+- Topic: Introductory Meeting – Welcome Onboard, Aman!
+- Date: Thursday, June 18, 2026
+- Time: 11:00 AM
+
+Aman – this is a great opportunity to meet your manager and learn more about the team.
+Tony – thank you for taking the time to welcome your new team member.
+
+Please let HR know if you have any questions or need to reschedule.
+
+Best regards,
+HR Team
+Atliq Technologies
+
+---
+[DEV NOTE] This email was originally addressed to: tony.sharma@atliq.com
+It has been redirected to krishna9988gupta@gmail.com because @atliq.com addresses are internal/mock.
+---

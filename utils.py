@@ -4,7 +4,7 @@ from datetime import date, timedelta
 import random
 from hrms import *
 
-def seed_services(employee_manager, leave_manager, meeting_manager, ticket_manager):
+def seed_services(employee_manager, meeting_manager, leave_manager, ticket_manager):
     """
     Seeds all service classes with coherent dummy data.
 

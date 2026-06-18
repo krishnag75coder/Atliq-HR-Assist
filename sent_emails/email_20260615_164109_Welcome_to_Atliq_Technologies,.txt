@@ -1,0 +1,25 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishna.gupta75052@gmail.com
+Subject: Welcome to Atliq Technologies, Krishna! 🎉
+Date:    2026-06-15 16:41:09
+============================================================
+
+Dear Krishna,
+
+Welcome to Atliq Technologies! We are thrilled to have you on board and look forward to the great contributions you'll bring to our team.
+
+Here are a few important details to get you started:
+
+- **Your Manager:** Tony Sharma
+- **Employee ID:** E009
+
+As you settle in, please don't hesitate to reach out to the HR team for any queries or support you may need. We're here to make your onboarding experience as smooth as possible.
+
+Once again, welcome aboard! We're excited to have you with us.
+
+Warm regards,
+HR Team
+Atliq Technologies

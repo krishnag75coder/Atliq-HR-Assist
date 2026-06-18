@@ -1,9 +1,3 @@
-import os
-import sys
-
-# Add the parent directory to sys.path to resolve 'hrms' module when running directly
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from collections import defaultdict
 from typing import Dict
 
@@ -46,4 +40,4 @@ class LeaveManager:
 
 if __name__ == "__main__":
     lm = LeaveManager()
-    print(lm.get_leave_history("E001"))
+    print(lm.get_leave_history("E004"))

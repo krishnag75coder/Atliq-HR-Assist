@@ -1,0 +1,25 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishna.gupta75052@gmail.com
+Subject: Welcome to Atliq Technologies, Chhavi! 🎉
+Date:    2026-06-16 00:09:19
+============================================================
+
+Dear Chhavi,
+
+Welcome to Atliq Technologies! 🎉 We are absolutely delighted to have you join our growing family and truly look forward to the incredible contributions you will bring to the team.
+
+Here are a few important details to get you started:
+
+- **Your Employee ID:** E011
+- **Your Manager:** Lisa Wong
+
+Please feel free to reach out to the HR team at any time for any queries, assistance, or support during your onboarding journey. We are here to make your transition as smooth and comfortable as possible.
+
+Once again, a very warm welcome to you, Chhavi! We are so excited to have you on board.
+
+Warm regards,
+HR Team
+Atliq Technologies

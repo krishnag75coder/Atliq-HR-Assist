@@ -1,0 +1,15 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishna9988gupta@gmail.com
+Subject: Test Email
+Date:    2026-06-15 16:31:23
+============================================================
+
+This is a test email sent to an internal @atliq.com address.
+
+---
+[DEV NOTE] This email was originally addressed to: tony.sharma@atliq.com
+It has been redirected to krishna9988gupta@gmail.com because @atliq.com addresses are internal/mock.
+---

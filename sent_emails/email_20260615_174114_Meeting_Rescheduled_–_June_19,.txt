@@ -1,0 +1,30 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishna.gupta75052@gmail.com, krishna9988gupta@gmail.com
+Subject: Meeting Rescheduled – June 19, 2026 at 10:00 AM
+Date:    2026-06-15 17:41:14
+============================================================
+
+Dear Krishna and Tony,
+
+This is to inform you that the introductory meeting has been rescheduled. Please find the updated meeting details below:
+
+Updated Meeting Details:
+- Topic: Introductory Meeting – Welcome Onboard, Krishna!
+- New Date: Friday, June 19, 2026
+- Time: 10:00 AM
+
+We apologize for any inconvenience caused. Please update your calendars accordingly.
+
+Should you have any questions or concerns, feel free to reach out to the HR team.
+
+Best regards,
+HR Team
+Atliq Technologies
+
+---
+[DEV NOTE] This email was originally addressed to: tony.sharma@atliq.com
+It has been redirected to krishna9988gupta@gmail.com because @atliq.com addresses are internal/mock.
+---

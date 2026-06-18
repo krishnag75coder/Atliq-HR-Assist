@@ -1,0 +1,42 @@
+============================================================
+MOCK EMAIL (SMTP unavailable — saved locally)
+============================================================
+From:    krishna9988gupta@gmail.com
+To:      krishna9988gupta@gmail.com
+Subject: Welcome to the Team, Krishna! 🎉
+Date:    2026-06-16 00:56:20
+============================================================
+
+Dear Krishna Gupta,
+
+Welcome aboard! We are thrilled to have you join our team and look forward to working with you.
+
+Here are a few things to help you get started:
+
+🖥️ Your First Day
+- Please arrive at 9:00 AM and check in at the reception desk.
+- You will be greeted by your manager/buddy who will guide you through the day.
+
+📋 What to Bring
+- A valid government-issued photo ID
+- Any signed documents or forms you may have received
+
+🔐 Account Setup
+- Your IT credentials and system access will be set up on your first day.
+- You will receive a separate email with login details for internal tools and systems.
+
+📚 Onboarding Schedule
+- Week 1 will include orientation sessions, team introductions, and training modules.
+- Your manager will share a detailed onboarding plan with you.
+
+🤝 Key Contacts
+- HR Team: hr@atliq.com — for any queries related to policies, benefits, or documentation.
+- IT Support: it@atliq.com — for system access or technical issues.
+
+We are excited to have you on board and can't wait to see the great work you'll do here. If you have any questions before your start date, please don't hesitate to reach out.
+
+Once again, welcome to the family!
+
+Warm regards,
+HR Team
+AtliQ

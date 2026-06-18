@@ -1,12 +1,6 @@
 from typing import List, Dict
 from collections import defaultdict
 from datetime import datetime
-import os
-import sys
-
-# Add the parent directory to sys.path to resolve 'hrms' module when running directly
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 from hrms.schemas import MeetingCreate, MeetingCancelRequest
 
 class MeetingManager:
