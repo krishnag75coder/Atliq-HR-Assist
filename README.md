@@ -60,3 +60,36 @@ To run the server:
 python server.py
 ```
 *(The server is configured to run via `stdio` transport by default).*
+
+## 🔌 Connecting to Claude Desktop
+
+To connect this MCP server to **Claude Desktop**, add the configuration below to your `claude_desktop_config.json` file.
+
+### Configuration File Location
+* **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+* **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+### Configuration Snippet
+
+Add this to the `mcpServers` object in the configuration file:
+
+```json
+{
+  "mcpServers": {
+    "atliq-hr-assist": {
+      "command": "python",
+      "args": [
+        "c:/Users/mudit/OneDrive/Desktop/code basics/code basics/agenticAi/project_agenticai/atliq-hr-assist/server.py"
+      ],
+      "env": {
+        "CB_EMAIL": "your-email@example.com",
+        "CB_EMAIL_PWD": "your-app-specific-password"
+      }
+    }
+  }
+}
+```
+
+> [!IMPORTANT]
+> Make sure to update the absolute path to `server.py` if your directory differs, and fill in your email credentials in the `env` object. If you are using a virtual environment (like `.venv`), change `"command": "python"` to `"command": "c:/Users/mudit/OneDrive/Desktop/code basics/code basics/agenticAi/project_agenticai/atliq-hr-assist/.venv/Scripts/python"`.
+
