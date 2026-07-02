@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atliq HR Assist - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>Atliq HR</h2>
+                    <span>Operations Suite</span>
+                </div>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-tab="dashboard">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#onboarding" class="menu-item" data-tab="onboarding">
+                    <i class="fa-solid fa-user-astronaut"></i>
+                    <span>Onboarding Wizard</span>
+                </a>
+                <a href="#employees" class="menu-item" data-tab="employees">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Employees</span>
+                </a>
+                <a href="#leaves" class="menu-item" data-tab="leaves">
+                    <i class="fa-solid fa-umbrella-beach"></i>
+                    <span>Leaves</span>
+                </a>
+                <a href="#meetings" class="menu-item" data-tab="meetings">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Meetings</span>
+                </a>
+                <a href="#tickets" class="menu-item" data-tab="tickets">
+                    <i class="fa-solid fa-ticket-simple"></i>
+                    <span>IT Tickets</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-avatar">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" alt="User Profile">
+                    <div class="avatar-status online"></div>
+                </div>
+                <div class="user-info">
+                    <h4>Sarah Johnson</h4>
+                    <span>HR Director</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-title">
+                    <h1 id="page-title">Dashboard Overview</h1>
+                    <p id="page-subtitle">Welcome back, Sarah. Here is what is happening today.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-secondary btn-icon-only" onclick="fetchData()" title="Refresh Dashboard">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                    <button class="btn btn-primary" onclick="showOnboardTab()">
+                        <i class="fa-solid fa-plus"></i> Onboard Employee
+                    </button>
+                </div>
+            </header>
+
+            <!-- Notifications / Alert messages -->
+            <div id="alert-container" class="alert-container"></div>
+
+            <div class="content-body">
+                
+                <!-- SECTION: DASHBOARD -->
+                <section id="tab-dashboard" class="tab-section active">
+                    <!-- Stats Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon emp-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-label">Total Employees</span>
+                                <h3 class="stat-value" id="stat-employees">-</h3>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                <i class="fa-solid fa-arrow-up-right"></i> +12%
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon leave-icon">
+                                <i class="fa-solid fa-umbrella-beach"></i>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-label">Avg Leave Balance</span>
+                                <h3 class="stat-value" id="stat-leaves">-</h3>
+                            </div>
+                            <div class="stat-trend text-muted">
+                                Days / Emp
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon meet-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-label">Scheduled Meetings</span>
+                                <h3 class="stat-value" id="stat-meetings">-</h3>
+                            </div>
+                            <div class="stat-trend trend-up">
+                                Active Syncs
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon ticket-icon">
+                                <i class="fa-solid fa-ticket-simple"></i>
+                            </div>
+                            <div class="stat-details">
+                                <span class="stat-label">Open Support Tickets</span>
+                                <h3 class="stat-value" id="stat-tickets">-</h3>
+                            </div>
+                            <div class="stat-trend trend-down" id="stat-tickets-trend">
+                                -
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dashboard Sub-grid -->
+                    <div class="dashboard-grid">
+                        <!-- Upcoming Meetings -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <i class="fa-solid fa-calendar-check card-header-icon meet-color"></i>
+                                    <h3>Upcoming Meetings</h3>
+                                </div>
+                                <a href="#meetings" class="card-action-link" onclick="switchTab('meetings')">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="meetings-timeline" id="recent-meetings-list">
+                                    <div class="empty-state">Loading meetings...</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent IT Tickets -->
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <i class="fa-solid fa-circle-exclamation card-header-icon ticket-color"></i>
+                                    <h3>Recent Tickets</h3>
+                                </div>
+                                <a href="#tickets" class="card-action-link" onclick="switchTab('tickets')">View All</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="tickets-activity" id="recent-tickets-list">
+                                    <div class="empty-state">Loading tickets...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: ONBOARDING WIZARD -->
+                <section id="tab-onboarding" class="tab-section">
+                    <div class="onboard-container">
+                        <div class="card glass-card form-card">
+                            <div class="card-header">
+                                <h3>New Employee Onboarding Wizard</h3>
+                                <span class="badge badge-accent">Interactive Workflow</span>
+                            </div>
+                            <div class="card-body">
+                                <p class="section-desc">Fill in the employee details below. The backend will trigger a 9-step automated onboarding sequence, raising tickets, scheduling meetings, and verifying leave setup in real-time.</p>
+                                
+                                <form id="onboard-form" onsubmit="runOnboarding(event)">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label for="onboard-name"><i class="fa-solid fa-user"></i> Full Name</label>
+                                            <input type="text" id="onboard-name" placeholder="e.g. Tony Sharma" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="onboard-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                            <input type="email" id="onboard-email" placeholder="e.g. tony.sharma@atliq.com" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="onboard-manager"><i class="fa-solid fa-user-tie"></i> Reporting Manager</label>
+                                            <select id="onboard-manager" required>
+                                                <!-- Populated dynamically -->
+                                                <option value="" disabled selected>Select Reporting Manager</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary btn-large btn-glow" id="onboard-submit-btn">
+                                            <i class="fa-solid fa-play"></i> Start 9-Step Onboarding Checklist
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Onboarding execution logs card -->
+                        <div class="card glass-card log-card" id="onboard-logs-card" style="display: none;">
+                            <div class="card-header">
+                                <div class="card-title-group">
+                                    <i class="fa-solid fa-robot pulse-icon"></i>
+                                    <h3>Automated Sequence Execution Logs</h3>
+                                </div>
+                                <span class="badge" id="onboard-sequence-badge">Running</span>
+                            </div>
+                            <div class="card-body">
+                                <!-- Progress Bar -->
+                                <div class="progress-container">
+                                    <div class="progress-bar-bg">
+                                        <div class="progress-bar-fill" id="onboard-progress-fill" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-percent" id="onboard-progress-percent">0% Completed</span>
+                                </div>
+
+                                <div class="logs-wrapper">
+                                    <ul class="logs-list" id="onboard-logs-list">
+                                        <!-- Steps appended dynamically -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: EMPLOYEES -->
+                <section id="tab-employees" class="tab-section">
+                    <div class="card glass-card">
+                        <div class="card-header flex-header">
+                            <div class="search-box">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" id="emp-search" placeholder="Search employees..." oninput="filterEmployees()">
+                            </div>
+                            <button class="btn btn-primary" onclick="openAddEmployeeModal()">
+                                <i class="fa-solid fa-plus"></i> Add Employee
+                            </button>
+                        </div>
+                        <div class="card-body no-padding">
+                            <div class="table-container">
+                                <table class="table" id="employees-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Email Address</th>
+                                            <th>Reporting Manager</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="employees-list">
+                                        <tr><td colspan="5" class="text-center">Loading employees...</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: LEAVES -->
+                <section id="tab-leaves" class="tab-section">
+                    <div class="leaves-grid">
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Apply Leave</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="leave-form" onsubmit="applyLeave(event)">
+                                    <div class="form-group">
+                                        <label for="leave-emp"><i class="fa-solid fa-user"></i> Employee</label>
+                                        <select id="leave-emp" required>
+                                            <option value="" disabled selected>Select Employee</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-grid" style="grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0;">
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <label for="leave-start-date"><i class="fa-solid fa-calendar-day"></i> Start Date</label>
+                                            <input type="date" id="leave-start-date" required>
+                                        </div>
+                                        <div class="form-group" style="margin-bottom: 0;">
+                                            <label for="leave-end-date"><i class="fa-solid fa-calendar-day"></i> End Date</label>
+                                            <input type="date" id="leave-end-date" required>
+                                        </div>
+                                    </div>
+                                    <small class="form-tip" style="margin-top: 0.5rem; margin-bottom: 1.25rem;">Select a date range. The system will apply leaves for all days in this period inclusive.</small>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Apply Leave</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Leave Directory & Balances</h3>
+                            </div>
+                            <div class="card-body no-padding">
+                                <div class="table-container small-table">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Employee</th>
+                                                <th>Balance</th>
+                                                <th>Action History</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="leaves-list">
+                                            <tr><td colspan="4" class="text-center">Loading leaves data...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: MEETINGS -->
+                <section id="tab-meetings" class="tab-section">
+                    <div class="leaves-grid">
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Schedule Meeting</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="meeting-form" onsubmit="scheduleMeeting(event)">
+                                    <div class="form-group">
+                                        <label for="meet-emp"><i class="fa-solid fa-user"></i> Employee</label>
+                                        <select id="meet-emp" required>
+                                            <option value="" disabled selected>Select Employee</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="meet-datetime"><i class="fa-solid fa-clock"></i> Date & Time</label>
+                                        <input type="datetime-local" id="meet-datetime" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="meet-topic"><i class="fa-solid fa-align-left"></i> Topic</label>
+                                        <input type="text" id="meet-topic" placeholder="e.g. Weekly Progress Sync" required>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Schedule Sync</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Scheduled Sync-ups</h3>
+                            </div>
+                            <div class="card-body no-padding">
+                                <div class="table-container small-table">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Date & Time</th>
+                                                <th>Employee</th>
+                                                <th>Topic</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="meetings-list">
+                                            <tr><td colspan="4" class="text-center">Loading meetings...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION: TICKETS -->
+                <section id="tab-tickets" class="tab-section">
+                    <div class="leaves-grid">
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>Raise Support Ticket</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="ticket-form" onsubmit="createTicket(event)">
+                                    <div class="form-group">
+                                        <label for="ticket-emp"><i class="fa-solid fa-user"></i> Requesting Employee</label>
+                                        <select id="ticket-emp" required>
+                                            <option value="" disabled selected>Select Employee</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ticket-item"><i class="fa-solid fa-laptop"></i> Requested Item</label>
+                                        <select id="ticket-item" required>
+                                            <option value="Laptop">MacBook Pro 16"</option>
+                                            <option value="Monitor">4K Monitor 27"</option>
+                                            <option value="Keyboard">Mechanical Keyboard</option>
+                                            <option value="Mouse">Wireless Mouse</option>
+                                            <option value="Security Badge">Atliq ID Badge</option>
+                                            <option value="Software License">Adobe CC / Intellij</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="ticket-reason"><i class="fa-solid fa-comment-dots"></i> Business Justification</label>
+                                        <textarea id="ticket-reason" placeholder="Explain why this hardware or software is needed..." required></textarea>
+                                    </div>
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-primary">Raise IT Ticket</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="card glass-card">
+                            <div class="card-header">
+                                <h3>IT Procurement & Ticketing System</h3>
+                            </div>
+                            <div class="card-body no-padding">
+                                <div class="table-container small-table">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Employee</th>
+                                                <th>Item</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tickets-list">
+                                            <tr><td colspan="5" class="text-center">Loading tickets...</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Employee Modal Dialog -->
+    <div id="add-employee-modal" class="modal-overlay">
+        <div class="modal glass-modal">
+            <div class="modal-header">
+                <h3>Add New Employee</h3>
+                <button class="modal-close-btn" onclick="closeAddEmployeeModal()">&times;</button>
+            </div>
+            <form id="add-employee-form" onsubmit="addEmployee(event)">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="add-emp-name">Full Name</label>
+                        <input type="text" id="add-emp-name" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-emp-email">Email Address</label>
+                        <input type="email" id="add-emp-email" placeholder="e.g. john.doe@atliq.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="add-emp-manager">Reporting Manager</label>
+                        <select id="add-emp-manager">
+                            <option value="">None (Leadership)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddEmployeeModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Employee</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Employee Details Modal Dialog -->
+    <div id="view-employee-modal" class="modal-overlay">
+        <div class="modal glass-modal" style="max-width: 650px;">
+            <div class="modal-header">
+                <h3>Employee Profile Details</h3>
+                <button class="modal-close-btn" onclick="closeViewEmployeeModal()">&times;</button>
+            </div>
+            <div class="modal-body" style="max-height: 80vh; overflow-y: auto; text-align: left;">
+                <div class="profile-header-card" style="display: flex; align-items: center; gap: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--glass-border); margin-bottom: 1.5rem;">
+                    <div id="profile-avatar-circle" style="width: 70px; height: 70px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 700; color: white;">
+                        <span id="profile-initials">TS</span>
+                    </div>
+                    <div>
+                        <h2 id="profile-name" style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: white; margin-bottom: 0.2rem;">Tony Sharma</h2>
+                        <p id="profile-id-email" style="color: var(--text-secondary); font-size: 0.9rem;">E004 | tony.sharma@atliq.com</p>
+                    </div>
+                </div>
+
+                <div class="profile-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--primary); margin-bottom: 0.75rem;"><i class="fa-solid fa-sitemap"></i> Organization</h4>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>Reporting Manager:</strong> <span id="profile-manager">Sarah Johnson (E001)</span></p>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>Direct Reports:</strong> <span id="profile-reports">None</span></p>
+                    </div>
+                    <div>
+                        <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--secondary); margin-bottom: 0.75rem;"><i class="fa-solid fa-umbrella-beach"></i> Time Off</h4>
+                        <p style="margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>Leave Balance:</strong> <span id="profile-leave-balance">19 Days</span></p>
+                        <div style="margin-bottom: 0.5rem; font-size: 0.9rem;"><strong>Leave History:</strong> <div id="profile-leave-history" style="display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem;">-</div></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--accent); margin-bottom: 0.75rem;"><i class="fa-solid fa-calendar-check"></i> Meetings Timeline</h4>
+                    <div id="profile-meetings" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Populate dynamically -->
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem; border-top: 1px solid var(--glass-border); padding-top: 1.5rem;">
+                    <h4 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--info); margin-bottom: 0.75rem;"><i class="fa-solid fa-circle-exclamation"></i> IT Tickets Raised</h4>
+                    <div id="profile-tickets" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <!-- Populate dynamically -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeViewEmployeeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reschedule Meeting Modal Dialog -->
+    <div id="reschedule-meeting-modal" class="modal-overlay">
+        <div class="modal glass-modal">
+            <div class="modal-header">
+                <h3>Reschedule Sync Meeting</h3>
+                <button class="modal-close-btn" onclick="closeRescheduleModal()">&times;</button>
+            </div>
+            <form id="reschedule-meeting-form" onsubmit="rescheduleMeeting(event)">
+                <input type="hidden" id="reschedule-emp-id">
+                <input type="hidden" id="reschedule-old-datetime">
+                <div class="modal-body" style="text-align: left;">
+                    <div class="form-group">
+                        <label>Employee</label>
+                        <input type="text" id="reschedule-emp-name" readonly style="background-color: rgba(255,255,255,0.05); color: var(--text-secondary); border-color: transparent;">
+                    </div>
+                    <div class="form-group">
+                        <label>Current Time</label>
+                        <input type="text" id="reschedule-current-time" readonly style="background-color: rgba(255,255,255,0.05); color: var(--text-secondary); border-color: transparent;">
+                    </div>
+                    <div class="form-group">
+                        <label for="reschedule-new-datetime"><i class="fa-solid fa-clock"></i> New Date & Time</label>
+                        <input type="datetime-local" id="reschedule-new-datetime" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reschedule-topic"><i class="fa-solid fa-align-left"></i> Topic</label>
+                        <input type="text" id="reschedule-topic" placeholder="e.g. Onboarding Sync" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeRescheduleModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Meeting</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

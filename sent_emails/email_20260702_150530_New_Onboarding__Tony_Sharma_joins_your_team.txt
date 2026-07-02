@@ -1,0 +1,17 @@
+To: sarah.johnson@atliq.com
+Subject: New Onboarding: Tony Sharma joins your team
+Body:
+Hi Sarah Johnson,
+
+This is to notify you that your new direct report, Tony Sharma, has been successfully onboarded in our HR system.
+
+Employee Details:
+- Name: Tony Sharma
+- Employee ID: E009
+- Email: tony.sharma@atliq.com
+
+Please make sure to schedule a sync-up meeting on their first day.
+
+Best Regards,
+HR Team
+Atliq Technologies

@@ -1,0 +1,17 @@
+To: tony.sharma@atliq.com
+Subject: New Onboarding: Krishna Gupta joins your team
+Body:
+Hi Tony Sharma,
+
+This is to notify you that your new direct report, Krishna Gupta, has been successfully onboarded in our HR system.
+
+Employee Details:
+- Name: Krishna Gupta
+- Employee ID: E010
+- Email: krishna9988gupta@gmail.com
+
+Please make sure to schedule a sync-up meeting on their first day.
+
+Best Regards,
+HR Team
+Atliq Technologies

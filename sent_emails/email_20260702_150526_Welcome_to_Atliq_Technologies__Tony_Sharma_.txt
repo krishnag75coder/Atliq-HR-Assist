@@ -1,0 +1,15 @@
+To: tony.sharma@atliq.com
+Subject: Welcome to Atliq Technologies, Tony Sharma!
+Body:
+Hi Tony Sharma,
+
+Welcome to Atliq Technologies! We are absolutely thrilled to have you join our team.
+
+Your Employee ID is E009.
+Your reporting manager is Sarah Johnson (sarah.johnson@atliq.com).
+
+If you have any questions or require initial support, please reach out to the HR Helpdesk.
+
+Best Regards,
+HR Team
+Atliq Technologies
