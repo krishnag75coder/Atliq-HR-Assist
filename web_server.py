@@ -92,7 +92,33 @@ def send_email_wrapper(to_emails: List[str], subject: str, body: str) -> str:
         logger.error(f"Failed to send real email: {e}")
         return f"Failed to send real email ({e}). Simulated email logged to {filename}."
 
+class LoginRequest(BaseModel):
+    username: str
+    password: str
+
 # API Endpoints
+
+@app.post("/api/auth/login")
+def login(request: LoginRequest):
+    username = request.username.strip().lower()
+    password = request.password.strip()
+    
+    # Check credentials
+    if (username == "admin" and password == "admin") or \
+       (username == "sarah.johnson@atliq.com" and password == "admin") or \
+       (username == "sarah" and password == "admin"):
+        return {
+            "status": "success",
+            "token": "atliq-mock-token-sarah-12345",
+            "user": {
+                "name": "Sarah Johnson",
+                "email": "sarah.johnson@atliq.com",
+                "role": "HR Director",
+                "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop"
+            }
+        }
+    else:
+        raise HTTPException(status_code=401, detail="Invalid username or password.")
 
 @app.get("/api/dashboard")
 def get_dashboard():

@@ -9,10 +9,116 @@ const API_BASE = '/api';
 
 // On page load
 document.addEventListener('DOMContentLoaded', () => {
-    initApp();
+    checkAuthState();
+    setupAuthListeners();
 });
 
+let appInitialized = false;
+
+function checkAuthState() {
+    const token = localStorage.getItem('atliq_token');
+    const userJson = localStorage.getItem('atliq_user');
+    
+    const loginContainer = document.getElementById('login-container');
+    const appContainer = document.getElementById('app-container');
+    
+    if (token && userJson) {
+        const user = JSON.parse(userJson);
+        // Show app, hide login
+        loginContainer.style.display = 'none';
+        appContainer.style.display = 'flex';
+        
+        // Update user display details in sidebar
+        document.getElementById('user-display-name').textContent = user.name || 'Sarah Johnson';
+        document.getElementById('user-display-role').textContent = user.role || 'HR Director';
+        if (user.avatar) {
+            document.getElementById('user-display-avatar').src = user.avatar;
+        }
+        
+        initApp();
+    } else {
+        // Show login, hide app
+        loginContainer.style.display = 'flex';
+        appContainer.style.display = 'none';
+    }
+}
+
+function setupAuthListeners() {
+    const loginForm = document.getElementById('login-form');
+    if (loginForm) {
+        loginForm.addEventListener('submit', handleLogin);
+    }
+    
+    const logoutBtn = document.getElementById('btn-logout');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', handleLogout);
+    }
+}
+
+async function handleLogin(e) {
+    e.preventDefault();
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const errorDiv = document.getElementById('login-error');
+    
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    
+    errorDiv.style.display = 'none';
+    errorDiv.textContent = '';
+    
+    try {
+        const response = await fetch(`${API_BASE}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+        
+        if (!response.ok) {
+            const errData = await response.json();
+            throw new Error(errData.detail || 'Invalid username or password.');
+        }
+        
+        const data = await response.json();
+        
+        // Save auth data
+        localStorage.setItem('atliq_token', data.token);
+        localStorage.setItem('atliq_user', JSON.stringify(data.user));
+        
+        // Clear fields
+        usernameInput.value = '';
+        passwordInput.value = '';
+        
+        // Refresh auth state
+        checkAuthState();
+        
+        // Show initial welcome alert
+        showAlert(`Welcome back, ${data.user.name}!`, 'success');
+    } catch (err) {
+        errorDiv.textContent = err.message;
+        errorDiv.style.display = 'block';
+    }
+}
+
+function handleLogout() {
+    localStorage.removeItem('atliq_token');
+    localStorage.removeItem('atliq_user');
+    
+    // Clear page content and reset tab to dashboard
+    switchTab('dashboard');
+    
+    // Refresh auth state
+    checkAuthState();
+}
+
 function initApp() {
+    if (appInitialized) {
+        fetchData();
+        return;
+    }
+    
     // Setup Navigation Tabs
     const menuItems = document.querySelectorAll('.sidebar-menu .menu-item');
     menuItems.forEach(item => {
@@ -23,6 +129,8 @@ function initApp() {
         });
     });
 
+    appInitialized = true;
+    
     // Load initial data
     fetchData();
 }

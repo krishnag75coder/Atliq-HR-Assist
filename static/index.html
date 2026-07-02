@@ -11,7 +11,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app-container">
+    <!-- Login Screen -->
+    <div id="login-container" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+                <h2>Atliq HR</h2>
+                <p>Operations Suite</p>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Email or Username</label>
+                    <input type="text" id="username" placeholder="sarah.johnson@atliq.com or admin" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="admin" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <div id="login-error" class="login-error"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="app-container" id="app-container" style="display: none;">
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-header">
@@ -51,12 +76,17 @@
             </nav>
             <div class="sidebar-footer">
                 <div class="user-avatar">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" alt="User Profile">
+                    <img id="user-display-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=256&auto=format&fit=crop" alt="User Profile">
                     <div class="avatar-status online"></div>
                 </div>
-                <div class="user-info">
-                    <h4>Sarah Johnson</h4>
-                    <span>HR Director</span>
+                <div class="user-info-container">
+                    <div class="user-info">
+                        <h4 id="user-display-name">Sarah Johnson</h4>
+                        <span id="user-display-role">HR Director</span>
+                    </div>
+                    <button id="btn-logout" class="btn-logout" title="Log Out">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
                 </div>
             </div>
         </aside>
