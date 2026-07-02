@@ -1,5 +1,7 @@
 # Atliq HR Assist - MCP Server
 
+**Deployment Link:** [https://atliq-hr-assist.onrender.com/](https://atliq-hr-assist.onrender.com/)
+
 Atliq HR Assist is a Model Context Protocol (MCP) server built with FastMCP. It provides a comprehensive set of Human Resources management tools to be used by an AI agent, streamlining operations like employee onboarding, leave management, IT ticketing, and communications.
 
 ## Features
